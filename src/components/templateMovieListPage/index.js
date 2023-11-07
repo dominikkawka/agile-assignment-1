@@ -25,10 +25,7 @@ function MovieListPageTemplate({ movies, title, action, setPage, pages, currentP
     })
     //Array.prototype.filter() expects a value to be returned at the end of arrow function
     .filter((m) => {
-      let ratings = m.vote_average
-      if (ratings >= ratingFilter) {
-        return m.vote_average
-      }
+      return m.vote_average >= ratingFilter;
     })
 
     const sortDefault = () => {
