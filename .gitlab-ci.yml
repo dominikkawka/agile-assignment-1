@@ -4,6 +4,7 @@ image: node:latest
 stages:
   - install
   - build
+  - test
 
 variables:
    npm_config_cache: "$CI_PROJECT_DIR/.npm"
@@ -32,3 +33,12 @@ bundle_app:
   stage: build
   script:
     - npm run build
+
+e2etest:
+# Node docker image with Cypress and Chrome pre-installed
+  stage: test
+  image: cypress/browsers:node18.12.0-chrome106-ff106
+  script:
+    - echo "Run tests in headless mode"
+    - npx serve -s ./build  -l 3000  &
+    - npx cypress run --browser chrome
