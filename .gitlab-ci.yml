@@ -42,3 +42,12 @@ e2etest:
     - echo "Run tests in headless mode"
     - npx serve -s ./build  -l 3000  &
     - npx cypress run --browser chrome
+
+build_jobX:
+  stage: build
+  only:
+    - develop
+    - branchX
+    - branchY
+  script:
+    - echo "build job X on demoBranch works"
