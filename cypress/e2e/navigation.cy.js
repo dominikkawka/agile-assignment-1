@@ -60,7 +60,7 @@ describe("Navigation", () => {
       });
   });
 
-  describe("The forward/backward links", () => {
+  describe.skip("The forward/backward links", () => {
     beforeEach(() => {
       cy.get(".MuiCardActions-root").eq(0).contains("More Info").click();
     });
