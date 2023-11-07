@@ -17,8 +17,6 @@ import auth from "../../firebase";
 
 connectAuthEmulator(auth, "http://localhost:9099")
 
-let userEmail = ""
-
 const monitorAuthState = async () => {
   onAuthStateChanged(auth, user => {
      if (user) {

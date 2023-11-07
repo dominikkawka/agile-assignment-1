@@ -32,7 +32,7 @@ const TemplatePeoplePage = ({ person, children }) => {
             flexWrap: "wrap",
             justifyContent: "space-around",
           }}>
-            <img src={`https://image.tmdb.org/t/p/w500/${info.profile_path}`} width={`90%`}></img>
+            <img src={`https://image.tmdb.org/t/p/w500/${info.profile_path}`} alt={`${info.profile_path}`} width={`90%`}></img>
           </div>
         </Grid>
 

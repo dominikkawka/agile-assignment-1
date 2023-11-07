@@ -4,7 +4,6 @@ import { useQuery } from 'react-query';
 import PageTemplate from '../components/templateMovieListPage';
 import Spinner from '../components/spinner';
 import AddToFavoritesIcon from '../components/cardIcons/addToFavorites'
-import MoviePagination from "../components/moviePagination";
 
 const HomePage = (props) => {
   const [page,setPage] = useState(1)

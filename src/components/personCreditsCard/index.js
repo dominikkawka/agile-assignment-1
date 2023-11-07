@@ -6,7 +6,6 @@ import CardHeader from "@mui/material/CardHeader";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import img from '../../images/film-poster-placeholder.png'
-import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
 
 export default function PersonCreditsCard({credit}) {

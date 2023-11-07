@@ -4,7 +4,6 @@ import FilterCard from "../filterMoviesCard";
 import MovieList from "../movieList";
 import Grid from "@mui/material/Grid";
 import { Button, Pagination, Stack } from "@mui/material";
-import MoviePagination from "../moviePagination";
 
 function MovieListPageTemplate({ movies, title, action, setPage, pages, currentPage }) {
   const [nameFilter, setNameFilter] = useState("");

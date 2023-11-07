@@ -1,7 +1,6 @@
 import React from "react";
 import MovieCreditsList from "../movieCreditsList";
 import Header from "../headerMovieList";
-import FilterCreditsCard from "../filterCreditsCard";
 import Grid from "@mui/material/Grid";
 
 function MovieCreditsListPageTemplate({ credits }) {
