@@ -1,25 +1,40 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+// Parent commands
+
+Cypress.Commands.add("goToPage", (pageName, directory) => {
+   cy.get("button").contains(pageName).click();
+   cy.url().should("include", directory);
+})
+
+Cypress.Commands.add("btnClick", (text) => {
+   cy.get("button").contains(text).click();
+})
+//These commands exist so that reviews.cy.js is easier to read.
+Cypress.Commands.add("missingAuthorText", () => {
+   cy.get(".MuiTypography-root").contains("Name is required").scrollIntoView()
+   cy.get(".MuiTypography-root").contains("Review cannot be empty").should('not.exist')
+   cy.get(".MuiTypography-root").contains("Review is too short").should('not.exist')
+})
+
+Cypress.Commands.add("missingReviewText", () => {
+   cy.get(".MuiTypography-root").contains("Review cannot be empty").scrollIntoView()
+   cy.get(".MuiTypography-root").contains("Name is required").should('not.exist')
+   cy.get(".MuiTypography-root").contains("Review is too short").should('not.exist')
+})
+
+Cypress.Commands.add("shortReviewText", () => {
+   cy.get(".MuiTypography-root").contains("Review is too short").scrollIntoView()
+   cy.get(".MuiTypography-root").contains("Review cannot be empty").should('not.exist')
+   cy.get(".MuiTypography-root").contains("Name is required").should('not.exist')
+})
+
+Cypress.Commands.add("ratingsDropdown", (score) => {
+   cy.get(".MuiSelect-select").click()
+   cy.get(".MuiButtonBase-root").contains(score).click()
+   cy.get(".MuiSelect-select").contains(score)
+})
+
+// Child commands
+
+// Dual commands
+
+// Overwrite commands
