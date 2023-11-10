@@ -34,7 +34,7 @@ export default function MovieCreditsCard({credit}) {
              </Typography>
            </Grid>
            <Grid item xs={6}>
-              <Button href={`../../person/${credit.id}`}>
+              <Button href={`../../person/${credit.id}`} data-testid="goToPersonDetails">
                 View more...
               </Button>
            </Grid>

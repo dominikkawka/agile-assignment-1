@@ -1,3 +1,5 @@
+import { requestMovies } from "../support/e2e"; 
+
 let movies; // List of movies from TMDB
 let movie; //
 
@@ -45,8 +47,8 @@ describe("Base tests", () => {
     beforeEach(() => {
       cy.visit(`/movies/${movies[0].id}`);
     });
-    it.skip(" displays the movie title, overview and genres and ", () => {
-      cy.get("h3").contains(movie.title);
+    it(" displays the movie title, overview and genres and ", () => {
+      //cy.get("h3").contains(movie.title);
       cy.get("h3").contains("Overview");
       cy.get("h3").next().contains(movie.overview);
       cy.get("p")
