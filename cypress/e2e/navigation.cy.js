@@ -1,3 +1,5 @@
+import "../support/commands"
+
 let movies;
 let movieId; // Enola Holmes movie id
 
@@ -25,10 +27,8 @@ describe("Navigation", () => {
   describe("Using the site header", () => {
     describe("when the viewport is desktop scale", () => {
       it("navigate via the button links", () => {
-        cy.get("button").contains("Favorites").click();
-        cy.url().should("include", `/favorites`);
-        cy.get("button").contains("Home").click();
-        cy.url().should("include", `/`);
+        cy.goToPage("Home", "/")
+        cy.goToPage("Favorites", "favorites")
       });
     });
     describe(
@@ -52,8 +52,7 @@ describe("Navigation", () => {
     it("favourites a movie, navigates to the favourites page then movie details page", () => {
         cy.get("button[aria-label='add to favorites']").eq(1).click();
 
-        cy.get("button").contains("Favorites").click();
-        cy.url().should("include", `/favorites`);
+        cy.goToPage("Favorites", "favorites")
 
         cy.get(".MuiCardActions-root").eq(0).contains("More Info").click();
         cy.url().should("include", `/movies/${movies[1].id}`);

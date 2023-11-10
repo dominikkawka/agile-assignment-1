@@ -33,7 +33,7 @@ describe("Review tests", () => {
     beforeEach(() => {
       cy.get("button[aria-label='add to favorites']").eq(1).click();
       cy.goToPage("Favorites", "/favorites")
-      cy.get('[data-testid="RateReviewIcon"]').click()
+      cy.getByTestId('RateReviewIcon').click()
     })
 
     it("Resetting the form", () => {
@@ -59,7 +59,7 @@ describe("Review tests", () => {
       cy.btnClick("Submit")
 
       cy.get(".MuiAlert-message").contains("Thank you for submitting a review")
-      cy.get('[data-testid="CloseIcon"]').click()
+      cy.getByTestId('CloseIcon').click()
       cy.url().should("include", "/favorites");
     })
 

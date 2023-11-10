@@ -5,6 +5,10 @@ Cypress.Commands.add("goToPage", (pageName, directory) => {
    cy.url().should("include", directory);
 })
 
+Cypress.Commands.add("getByTestId", (id) => {
+   cy.get(`[data-testid=${id}]`)
+})
+
 Cypress.Commands.add("btnClick", (text) => {
    cy.get("button").contains(text).click();
 })
