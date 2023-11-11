@@ -19,7 +19,7 @@ const root = {
 const chip = { margin: 0.5 };
 
 const PeopleDetails = ({ person }) => { 
-  console.log(person)
+  //console.log(person)
   return (
     <>
       <Typography variant="h5" component="h3">
