@@ -15,7 +15,7 @@ const NowPlayingPage = (props) => {
     refetch()
     // eslint-disable-next-line
    }, [page]);
-   console.log(page)
+   //console.log(page)
 
   if (isLoading) {
     return <Spinner />

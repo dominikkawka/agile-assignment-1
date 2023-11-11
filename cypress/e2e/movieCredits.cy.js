@@ -45,7 +45,7 @@ describe("Movie Credits", () => {
          });
       })
       
-      it("Check if Movie recommendations lead to another movie details page", () => {
+      it("Check if Movie credits lead to an actors page", () => {
          let c1 = Math.ceil((credits.cast).length/2)
          let c2 = Math.ceil((credits.cast).length/3)
 
