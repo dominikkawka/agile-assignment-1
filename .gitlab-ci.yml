@@ -4,8 +4,9 @@ image: node:latest
 stages:
   - install
   - build
-  - exercise
+#  - startEmulator
   - test
+#  - endEmulator
 
 variables:
    npm_config_cache: "$CI_PROJECT_DIR/.npm"
@@ -35,6 +36,16 @@ bundle_app:
   script:
     - npm run build
 
+start_firebase_emulator:
+  stage: startEmulator
+  script:
+    - firebase emulators:start --only auth --project $FIREBASE_PROJECT_ID
+
+end_firebase_emulator:
+  stage: endEmulator
+  script:
+    - firebase emulators:stop
+
 e2etest:
 # Node docker image with Cypress and Chrome pre-installed
   stage: test
@@ -43,27 +54,3 @@ e2etest:
     - echo "Run tests in headless mode"
     - npx serve -s ./build  -l 3000  &
     - npx cypress run --browser chrome
-
-build_jobX:
-  stage: build
-  only:
-    - develop
-    - branchX
-    - branchY
-  script:
-    - echo "build job X on demoBranch works"
-
-test_jobX:
-  stage: test
-  only:
-    - main
-    - branchX
-  script:
-    - echo "Run test job X"
-
-exercise_job:
-  stage: exercise
-  only:
-    - main
-  script:
-    - echo "exercise job"

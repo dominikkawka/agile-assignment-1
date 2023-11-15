@@ -43,6 +43,8 @@ describe("The favourites feature", () => {
         .find("p")
         .contains(movies[3].title);
     });
-    it("removes deleted movies", () => {});
+    it("removes deleted movies", () => {
+      
+    });
   });
 });

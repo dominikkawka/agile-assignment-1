@@ -97,6 +97,7 @@ export default function CreateAccountPage() {
               name="email"
               autoComplete="email"
               autoFocus
+              inputProps={{ maxLength: 64 }}
             />
             <TextField
               margin="normal"
@@ -120,7 +121,7 @@ export default function CreateAccountPage() {
             >
               Create Account
             </Button>
-            {useAuth}
+            <p id="authText" data-testid="authText">{useAuth}</p>
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">

@@ -105,6 +105,7 @@ export default function LoginPage() {
               name="email"
               autoComplete="email"
               autoFocus
+              inputProps={{ maxLength: 64 }}
             />
             <TextField
               margin="normal"
@@ -128,7 +129,7 @@ export default function LoginPage() {
             >
               Sign In
             </Button>
-            {useAuth}
+            <p id="authText" data-testid="authText">{useAuth}</p>
             <Button
               type="submit"
               fullWidth

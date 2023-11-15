@@ -137,6 +137,7 @@ const ReviewForm = ({ movie }) => {
               label="Author's name"
               name="author"
               autoFocus
+              inputProps={{ maxLength: 16 }}
             />
           )}
         />

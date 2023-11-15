@@ -30,3 +30,8 @@ export const getRevenue = (revenue) => {
   let r = rev.join(",");
   return r
 }
+
+export const randomString = () => {
+  let res = Math.floor(Math.random() * 10000)
+  return res
+}
