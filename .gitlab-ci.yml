@@ -27,6 +27,7 @@ install_dependencies:
   stage: install
   script:
     - npm ci
+    - npm install -g firebase-tools
   artifacts:
     paths:
       - node_modules/
