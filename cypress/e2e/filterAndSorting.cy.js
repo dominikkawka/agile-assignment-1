@@ -97,6 +97,17 @@ describe("Filtering and Sorting", () => {
       let result2 = filterByRating(movies, 3.5)
       cy.get(".MuiCardHeader-content").should("have.length", result2.length);
     });
+    it("filter by rating edge cases", () => {
+      cy.get('[id=ratings-slider]').click(250, 20) // 10* rating
+      cy.btnClick("Default")
+      let result = filterByRating(movies, 10)
+      cy.get(".MuiCardHeader-content").should("have.length", result.length);
+
+      cy.get('[id=ratings-slider]').click(0, 20) // 0* rating
+      cy.btnClick("Default")
+      let result2 = filterByRating(movies, 0)
+      cy.get(".MuiCardHeader-content").should("have.length", result2.length);
+    })
     it("using multiple filters at once", () => {
       cy.get("#filled-search").clear().type("m")
       cy.get("#genre-select").click();
@@ -125,20 +136,6 @@ describe("Filtering and Sorting", () => {
         cy.wrap($card).find("p").contains(sorted[index].title);
       });
     })
-    it("A to Z filtering", () => {
-      cy.btnClick("A-Z").scrollIntoView()
-      let sorted = sortAtoZ(movies)
-      cy.get(".MuiCardHeader-content").each(($card, index) => {
-        cy.wrap($card).find("p").contains(sorted[index].title);
-      });
-    });
-    it("Z to A filtering", () => {
-      cy.btnClick("Z-A").scrollIntoView()
-      let sorted = sortZtoA(movies)
-      cy.get(".MuiCardHeader-content").each(($card, index) => {
-        cy.wrap($card).find("p").contains(sorted[index].title);
-      });
-    });
     it("Lowest->Highest filtering", () => {
       cy.btnClick("Lowest").scrollIntoView()
       let sorted = sortLowestRated(movies)
@@ -149,6 +146,20 @@ describe("Filtering and Sorting", () => {
     it("Highest->Lowest filtering", () => {
       cy.btnClick("Highest").scrollIntoView()
       let sorted = sortHighestRated(movies)
+      cy.get(".MuiCardHeader-content").each(($card, index) => {
+        cy.wrap($card).find("p").contains(sorted[index].title);
+      });
+    });
+    it("A to Z filtering", () => {
+      cy.btnClick("A-Z").scrollIntoView()
+      let sorted = sortAtoZ(movies)
+      cy.get(".MuiCardHeader-content").each(($card, index) => {
+        cy.wrap($card).find("p").contains(sorted[index].title);
+      });
+    });
+    it("Z to A filtering", () => {
+      cy.btnClick("Z-A").scrollIntoView()
+      let sorted = sortZtoA(movies)
       cy.get(".MuiCardHeader-content").each(($card, index) => {
         cy.wrap($card).find("p").contains(sorted[index].title);
       });

@@ -29,6 +29,7 @@ describe("Review tests", () => {
 
     describe.only("Writing a review", () => {
     let review = "This is a test review. Hope you enjoy this review!"
+    let authorEdgeName = "This is a really long name of an author"
 
     beforeEach(() => {
       cy.get("button[aria-label='add to favorites']").eq(1).click();
@@ -91,6 +92,11 @@ describe("Review tests", () => {
         cy.btnClick("Submit")
 
         cy.shortReviewText()
+      })
+
+      it("Author name character limit", () => {
+        cy.get('input[id="author"]').click().type(authorEdgeName)
+        cy.get('input[id="author"]').should('not.contain', authorEdgeName)
       })
     })
   })
