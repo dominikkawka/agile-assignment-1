@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -36,26 +36,31 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function LoginPage() {
+  const [useAuth, setAuth] = useState("")
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     try {
       const userCredentials = await signInWithEmailAndPassword(auth, data.get('email'), data.get('password'))
-      console.log(userCredentials.user)
+      //console.log(userCredentials.user)
+      setAuth(`Welcome ${userCredentials.user.email}`)
     } catch(error) {
       if (error.code === AuthErrorCodes.INVALID_PASSWORD) {
-         console.error("invalid password, please try again")
+         //console.error("invalid password, please try again")
+         setAuth(error.code)
       } else {
-         console.error(error)
+         //console.error(error)
+         setAuth(error.code)
       }
     }
 
   const monitorAuthState = async () => {
    onAuthStateChanged(auth, user => {
       if (user) {
-         console.log(user)
+         //console.log(user)
       } else {
-         console.log("not logged in")
+         //console.log("not logged in")
+         setAuth("goodbye!")
       }
    })
   }
@@ -123,6 +128,7 @@ export default function LoginPage() {
             >
               Sign In
             </Button>
+            {useAuth}
             <Button
               type="submit"
               fullWidth

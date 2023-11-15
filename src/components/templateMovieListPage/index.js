@@ -23,7 +23,6 @@ function MovieListPageTemplate({ movies, title, action, setPage, pages, currentP
     .filter((m) => {
       return m.release_date.search(yearFilter) !== -1
     })
-    //Array.prototype.filter() expects a value to be returned at the end of arrow function
     .filter((m) => {
       return m.vote_average >= ratingFilter;
     })

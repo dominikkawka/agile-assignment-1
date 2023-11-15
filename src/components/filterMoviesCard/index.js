@@ -126,7 +126,7 @@ export default function FilterMoviesCard(props) {
           id="ratings-slider"
           min={1}
           max={10}
-          defaultValue={4}
+          defaultValue={1}
           aria-label="Small"
           valueLabelDisplay="auto"
           onChange={handleRatingChange}

@@ -21,10 +21,10 @@ const monitorAuthState = async () => {
   onAuthStateChanged(auth, user => {
      if (user) {
         let userEmail = user.email
-        console.log(userEmail)
+        //console.log(userEmail)
         return userEmail
      } else {
-        console.error("user not logged in")
+        //console.error("user not logged in")
       }
   })
   }
