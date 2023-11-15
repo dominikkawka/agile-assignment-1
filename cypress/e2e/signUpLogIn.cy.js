@@ -9,14 +9,14 @@ describe("Signing up and Logging in", () => {
       cy.visit("/login")
       cy.getByTestId("authText").should("not.exist")
    }) 
-   /*
+   
    Cypress.on('fail', (err, runnable) => {
       if (err.name === "AssertionError") {
          cy.getByTestId("authText").contains("7")
          return false;
       } 
     });
-   */
+   
    describe("Create account tests", () => {
       beforeEach(() => {
          cy.get(".MuiTypography-root").contains("Sign Up").click()
