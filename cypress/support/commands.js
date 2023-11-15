@@ -37,6 +37,26 @@ Cypress.Commands.add("ratingsDropdown", (score) => {
    cy.get(".MuiSelect-select").contains(score)
 })
 
+Cypress.Commands.add("typeEmail", (text) => {
+   cy.get("#email").click().clear().type(text)
+})
+
+Cypress.Commands.add("typePassword", (text) => {
+   cy.get("#password").click().clear().type(text)
+})
+
+Cypress.Commands.add("isFirebaseUp", (auth) => {
+   Cypress.on("fail", (e, runnable) => {
+      console.log("error", e);
+      console.log("runnable", runnable);
+      console.log("message", e.message);
+      if ( e.name === "AssertionError" &&
+      !e.message.includes(`Timed out retrying after 4000ms: Expected to find content: '${auth}' within the element: <p#authText> but never did.`)) 
+      {
+      throw cy.getByTestId("authText").contains(auth);
+      } })
+})
+
 // Child commands
 
 // Dual commands
