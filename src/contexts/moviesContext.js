@@ -40,7 +40,7 @@ const MoviesContextProvider = (props) => {
     }
     setToWatch(newToWatchList)
   };
-  console.log(toWatch)
+  //console.log(toWatch)
 
   return (
     <MoviesContext.Provider

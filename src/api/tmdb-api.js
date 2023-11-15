@@ -13,7 +13,7 @@
   };
   
   export const getMovie = async (args) => {
-    // console.log(args)
+    //console.log(args)
     const [, idPart] = args.queryKey;
     const { id } = idPart;
     return fetch(
@@ -127,7 +127,7 @@
   }
 
   export const getMovieRecommendations = (args) => {
-    // console.log(args)
+    //console.log(args)
     const [, idPart] = args.queryKey;
     const { id } = idPart;
     return fetch(
@@ -144,7 +144,7 @@
   };
 
   export const getMovieSimilar = (args) => {
-    // console.log(args)
+    //console.log(args)
     const [, idPart] = args.queryKey;
     const { id } = idPart;
     return fetch(
@@ -177,7 +177,7 @@
   };
 
   export const getPerson = (args) => {
-    // console.log(args)
+    //console.log(args)
     const [, idPart] = args.queryKey;
     const { id } = idPart;
     return fetch(

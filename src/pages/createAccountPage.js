@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -38,26 +38,31 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function CreateAccountPage() {
+  const [useAuth, setAuth] = useState("")
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     try {
       const userCredentials = await createUserWithEmailAndPassword(auth, data.get('email'), data.get('password'))
-      console.log("hello, "+userCredentials.user.email)
+      //console.log("hello, "+userCredentials.user.email)
+      setAuth(`Account created! welcome ${userCredentials.user.email}!`)
     } catch(error) {
       if (error.code === AuthErrorCodes.INVALID_PASSWORD) {
-         console.error("invalid password, please try again")
+         //console.error("invalid password, please try again")
+         setAuth(error.code)
+
       } else {
-         console.error(error)
+         //console.error(error)
+         setAuth(error.code)
       }
     }
 
    const monitorAuthState = async () => {
    onAuthStateChanged(auth, user => {
       if (user) {
-         console.log(user)
+         //console.log(user)
       } else {
-         console.error("account is not created")
+        //console.error("account is not created")
        }
    })
    }
@@ -115,6 +120,7 @@ export default function CreateAccountPage() {
             >
               Create Account
             </Button>
+            {useAuth}
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">
