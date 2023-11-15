@@ -39,11 +39,13 @@ bundle_app:
 
 start_firebase_emulator:
   stage: startEmulator
+  image: firebase/emulators
   script:
     - firebase emulators:start --only auth --project $FIREBASE_PROJECT_ID
 
 end_firebase_emulator:
   stage: endEmulator
+  image: firebase/emulators
   script:
     - firebase emulators:stop
 
