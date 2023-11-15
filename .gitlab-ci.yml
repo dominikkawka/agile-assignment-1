@@ -4,9 +4,9 @@ image: node:latest
 stages:
   - install
   - build
-#  - startEmulator
+  - startEmulator
   - test
-#  - endEmulator
+  - endEmulator
 
 variables:
    npm_config_cache: "$CI_PROJECT_DIR/.npm"
