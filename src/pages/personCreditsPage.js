@@ -20,6 +20,7 @@ const PersonCreditsPage = (props) => {
    if (isError) {
      return <h1>{error.message}</h1>;
    }
+   //console.log(data)
    return (
      <>
      <PersonCreditsListPageTemplate credits={data}></PersonCreditsListPageTemplate>
