@@ -25,9 +25,22 @@ describe("Review tests", () => {
         cy.goToPage("Favorites", "/favorites")
         cy.get(".MuiCardHeader-content").eq(0).find("p").contains(movies[1].title);
       })
+      it("Removing from favorites", () => {
+        cy.get("button[aria-label='add to favorites']").eq(1).click();
+        cy.get("button[aria-label='add to favorites']").eq(3).click();
+        cy.goToPage("Favorites", "/favorites")
+
+        cy.getByTestId('DeleteIcon').eq(0).click()
+        cy.get(".MuiCardHeader-content").contains(movies[1].title).should('exist')
+
+        cy.goToPage("Home", "/")
+        cy.wait(100)
+        cy.goToPage("Favorites", "/favorites")
+        cy.get(".MuiCardHeader-content").contains(movies[1].title).should('not.exist')
+      })
    })
 
-    describe.only("Writing a review", () => {
+    describe("Writing a review", () => {
     let review = "This is a test review. Hope you enjoy this review!"
     let authorEdgeName = "This is a really long name of an author"
 
