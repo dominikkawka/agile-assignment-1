@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
-import PageTemplate from '../components/templateMovieListPage'
+import React, { useEffect, useState, lazy, Suspense } from "react";
 import { getPopularReleases } from "../api/tmdb-api";
 import { useQuery } from 'react-query';
-import Spinner from '../components/spinner';
-import AddToWatchIcon from '../components/cardIcons/addToWatch'
+
+const PageTemplate = lazy(() => import("../components/templateMovieListPage"));
+const Spinner = lazy(() => import("../components/spinner"));
+const AddToWatchIcon = lazy(() => import("../components/cardIcons/addToWatch"));
 
 
 const PopularPage = (props) => {
@@ -40,6 +41,7 @@ const PopularPage = (props) => {
   localStorage.setItem('favorites', JSON.stringify(favorites))
 
   return (
+    <Suspense fallback={<h1>Loading page</h1>}>
     <PageTemplate
       title='Popular Movies'
       movies={movies}
@@ -50,6 +52,7 @@ const PopularPage = (props) => {
         return <AddToWatchIcon movie={movie} />
       }}
     />
+    </Suspense>
   );
 };
 

@@ -1,9 +1,10 @@
-import React from "react";
+import React, { lazy, Suspense} from "react";
 import { useParams } from 'react-router-dom';
-import MovieCreditsListPageTemplate from "../components/templateMovieCreditsListPage";
 import { getMovieCredits } from '../api/tmdb-api'
 import { useQuery } from "react-query";
-import Spinner from '../components/spinner'
+
+const MovieCreditsListPageTemplate = lazy(() => import("../components/templateMovieCreditsListPage"));
+const Spinner = lazy(() => import("../components/spinner"));
 
 const MovieCreditsPage = (props) => {
    const { id } = useParams();
@@ -23,7 +24,9 @@ const MovieCreditsPage = (props) => {
 
    return (
      <>
+     <Suspense fallback={<h1>Loading page</h1>}>
      <MovieCreditsListPageTemplate credits={data}></MovieCreditsListPageTemplate>
+     </Suspense>
      </>
   );
 };
