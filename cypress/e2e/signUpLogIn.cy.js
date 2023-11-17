@@ -9,13 +9,16 @@ describe("Signing up and Logging in", () => {
       cy.visit("/login")
       cy.getByTestId("authText").should("not.exist")
    }) 
-   
+   /*
    Cypress.on('fail', (err, runnable) => {
       if (err.name === "AssertionError") {
-         cy.getByTestId("authText").contains("7")
+         cy.getByTestId("authText").contains("|||")
          return false;
-      } 
-    });
+      } else {
+         return true
+      }
+    }); */
+    
    
    describe("Create account tests", () => {
       beforeEach(() => {
@@ -25,6 +28,8 @@ describe("Signing up and Logging in", () => {
       it("Failing to make account", () => {
          cy.btnClick("Create Account")
          cy.getByTestId("authText").contains("invalid-email")
+         //If firebase is down, these tests will fail when ln13-20 is commented out
+         //To start firebase, write `firebase emulators:start --only auth --project $FIREBASE_PROJECT_ID`
          cy.isFirebaseUp("invalid-email")
 
          cy.typeEmail(randomEmail)
